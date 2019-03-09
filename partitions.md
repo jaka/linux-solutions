@@ -7,6 +7,12 @@
 fdisk -l 
 ```
 
+#### Mount NTFS read-only for all users
+Append the following options to `mount`
+```
+fmask=0133,dmask=0022
+```
+
 #### Backup Master Boot Record (MBR)
 ```
 $ dd if=/dev/sdb of=my.mbr bs=466 count=1
