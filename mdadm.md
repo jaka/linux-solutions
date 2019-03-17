@@ -10,3 +10,9 @@ Save the array to configuration
 ```
 mdadm --detail --scan >> /etc/mdadm/mdadm.conf
 ```
+
+#### Removing a drive from MD
+```
+mdadm /dev/md0 --fail /dev/sdc
+mdadm /dev/md0 --remove /dev/sdc
+```
