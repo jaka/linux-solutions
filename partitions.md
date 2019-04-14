@@ -1,16 +1,23 @@
-## partitions
+## Partitions
 
 ### Actions
 
-#### View partition tables
+#### Backup NTFS partition with compression
 ```
-fdisk -l 
+partclone.ntfs -c -s /dev/sda1 | gzip -c -3 > ./part1.gz
 ```
 
 #### Mount NTFS read-only for all users
 Append the following options to `mount`
 ```
 fmask=0133,dmask=0022
+```
+
+### Partition tables
+
+#### View partition tables
+```
+fdisk -l
 ```
 
 #### Backup Master Boot Record (MBR)
