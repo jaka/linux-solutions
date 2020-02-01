@@ -2,7 +2,7 @@
 
 ### Actions
 
-#### Removing SATA disk
+#### Remove a SATA disk
 A device name of `/dev/sdc` is assumed.
 
 Firstly find out controller the device is attached to (we'll need this later).
@@ -17,7 +17,16 @@ Disconnect the device
 ```
 echo 1 > /sys/block/sdc/device/delete
 ```
+Remove the disk.
+
 Rescan the controller
 ```
 echo "- - -" > /sys/class/scsi_host/host2/scan
+```
+
+#### Create thin provisioned qcow2 disk image
+
+This creates 60 GB disk image as file `/opt/test.qcow2`. Underlying filesystem must support thin provisioning.
+```
+qemu-img create -f qcow2 -o preallocation=metadata /opt/test.qcow2 60G
 ```
