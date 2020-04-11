@@ -11,6 +11,12 @@ Save the array to configuration
 mdadm --detail --scan >> /etc/mdadm/mdadm.conf
 ```
 
+#### Scrubbing the array
+Check array `md0`
+```
+echo check > /sys/block/md0/md/sync_action
+```
+
 #### Removing a drive from MD
 ```
 mdadm /dev/md0 --fail /dev/sdc
