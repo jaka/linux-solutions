@@ -30,3 +30,9 @@ This creates 60 GB disk image as file `/opt/test.qcow2`. Underlying filesystem m
 ```
 qemu-img create -f qcow2 -o preallocation=metadata /opt/test.qcow2 60G
 ```
+
+#### Backup disk squashfs
+Copy `/dev/sda` into `sda.img` and store it compressed inside `/dst/sda.squashfs`.
+```
+mksquashfs squashdir /dst/sda.squashfs -no-progress -comp lzo -p 'sda.img f 444 root root sudo dd if=/dev/sda conv=sync,noerror bs=16k status=progress'
+```

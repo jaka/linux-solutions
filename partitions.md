@@ -49,3 +49,12 @@ $ dd bs=512 count=1 if=/dev/zero of=/dev/sdb
 ```
 $ dd bs=440 count=1 conv=notrunc if=/usr/lib/syslinux/mbr/mbr.bin of=/dev/sdb
 ```
+
+## Troubleshooting
+
+### NTFS
+In case of permission error while copying to a NTFS formatted partition.
+```
+rsync: mkstemp [...] failed: Permission denied (13)
+```
+install **ntfs-3g** package: `apt-get install -y ntfs-3g`
